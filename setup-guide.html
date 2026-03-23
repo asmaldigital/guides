@@ -443,6 +443,23 @@
 
   footer a { color: var(--cyan); text-decoration: none; }
 
+  /* Screenshots */
+  .screenshot {
+    width: 100%;
+    border-radius: 12px;
+    margin: 12px 0 4px;
+    border: 1px solid var(--light-gray);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  .screenshot-caption {
+    font-size: 13px;
+    color: var(--cool-gray);
+    text-align: center;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
   /* Responsive */
   @media (max-width: 640px) {
     .container { padding: 24px 16px 60px; }
@@ -541,6 +558,8 @@
               <span class="info-icon">&#x2328;&#xFE0F;</span>
               <div>Shortcut: Press <strong>Command + Spacebar</strong> to open Spotlight. Type <strong>Terminal</strong>. Press Enter.</div>
             </div>
+            <img src="images/01-spotlight.png" alt="Spotlight Search on Mac" class="screenshot">
+            <p class="screenshot-caption">Press Command + Spacebar to open Spotlight</p>
           </div>
         </div>
 
@@ -699,6 +718,8 @@
           <div>
             <h3>Open Terminal here</h3>
             <p><strong>Right-click</strong> (or Control-click) the folder. Select the second to last option: <strong>"New Terminal at Folder"</strong></p>
+            <img src="images/02-finder-menu.png" alt="Right-click menu showing New Terminal at Folder" class="screenshot">
+            <p class="screenshot-caption">Right-click your folder and select "New Terminal at Folder"</p>
           </div>
         </div>
         <div class="step">
@@ -706,6 +727,8 @@
           <div>
             <h3>Start Claude Code</h3>
             <p>Type <span class="code">claude</span> and press <strong>Enter</strong>. You are now inside Claude Code.</p>
+            <img src="images/04-terminal-ready.png" alt="Terminal ready for claude command" class="screenshot">
+            <p class="screenshot-caption">Terminal opens in your folder. Type "claude" and press Enter.</p>
           </div>
         </div>
         <div class="step">
@@ -713,6 +736,10 @@
           <div>
             <h3>Run your first command</h3>
             <p>Type <span class="code">/command-center</span> and press Enter. This starts the guided setup.</p>
+            <img src="images/03-claude-welcome.png" alt="Claude Code welcome screen" class="screenshot">
+            <p class="screenshot-caption">Claude Code welcome screen with the pig avatar</p>
+            <img src="images/05-command-center.png" alt="Command Center setup phases" class="screenshot" style="margin-top: 16px;">
+            <p class="screenshot-caption">/command-center shows your setup phases and all available commands</p>
           </div>
         </div>
       </div>
@@ -811,6 +838,14 @@
           <div class="cmd-desc">See all available commands and your setup status. Start here if you are unsure.</div>
         </div>
       </div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <p style="font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px;">/briefing in action:</p>
+      <img src="images/07-briefing-top.png" alt="Briefing command pulling live data" class="screenshot">
+      <p class="screenshot-caption">The briefing command pulls live data from your connected tools</p>
+      <img src="images/06-briefing-data.png" alt="Briefing showing expenses, calendar, subscribers, emails" class="screenshot" style="margin-top: 12px;">
+      <p class="screenshot-caption">Revenue, calendar, new subscribers, and actionable email summaries</p>
     </div>
 
     <div class="info tip" style="margin-top: 16px;">
