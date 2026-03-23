@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Command Center - Quick Reference</title>
+<style>
+  :root {
+    --purple: #8446AD;
+    --purple-light: #9B5BC4;
+    --purple-glow: rgba(132, 70, 173, 0.15);
+    --purple-subtle: rgba(132, 70, 173, 0.08);
+    --dark: #1A1A1A;
+    --gray-900: #0B0B0F;
+    --gray-600: #6B7280;
+    --gray-400: #9CA3AF;
+    --gray-200: #E5E7EB;
+    --gray-100: #F3F4F6;
+    --gray-50: #F9FAFB;
+    --white: #FFFFFF;
+    --green: #10B981;
+    --blue: #3B82F6;
+    --amber: #F59E0B;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    background: var(--gray-50);
+    color: var(--dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    margin-bottom: 48px;
+    padding: 48px 32px;
+    background: linear-gradient(135deg, var(--white) 0%, var(--purple-subtle) 100%);
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--purple);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    color: var(--dark);
+  }
+
+  .hero p {
+    font-size: 16px;
+    color: var(--gray-600);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 16px;
+    padding-left: 4px;
+  }
+
+  /* Glass card */
+  .card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.06);
+  }
+
+  .card-group {
+    margin-bottom: 48px;
+  }
+
+  /* Steps */
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--purple);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .step-content h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--dark);
+  }
+
+  .step-content p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  .step-content .highlight {
+    display: inline;
+    background: var(--purple-subtle);
+    color: var(--purple);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* Command cards */
+  .command-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 24px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    transition: transform 0.15s ease;
+  }
+
+  .command-card:hover { transform: translateY(-1px); }
+
+  .command-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .command-icon.briefing { background: rgba(59, 130, 246, 0.1); }
+  .command-icon.board { background: rgba(132, 70, 173, 0.1); }
+  .command-icon.content { background: rgba(16, 185, 129, 0.1); }
+  .command-icon.voice { background: rgba(245, 158, 11, 0.1); }
+  .command-icon.launch { background: rgba(239, 68, 68, 0.1); }
+
+  .command-name {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--purple);
+    margin-bottom: 2px;
+  }
+
+  .command-desc {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.4;
+  }
+
+  .command-example {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--gray-400);
+    font-style: italic;
+  }
+
+  /* Tips */
+  .tip {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .tip:last-child { border-bottom: none; }
+
+  .tip-icon {
+    flex-shrink: 0;
+    font-size: 16px;
+    margin-top: 2px;
+  }
+
+  .tip-text {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  .tip-text strong { color: var(--dark); }
+
+  /* Troubleshoot */
+  .trouble-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .trouble-item:last-child { border-bottom: none; }
+
+  .trouble-problem {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 4px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  }
+
+  .trouble-fix {
+    font-size: 14px;
+    color: var(--gray-600);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px 0;
+    color: var(--gray-400);
+    font-size: 12px;
+  }
+
+  .footer a {
+    color: var(--purple);
+    text-decoration: none;
+  }
+
+  /* Status badge */
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .status.connected {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .container { padding: 24px 16px 60px; }
+    .hero { padding: 32px 20px; }
+    .hero h1 { font-size: 26px; }
+    .card { padding: 20px; }
+    .command-card { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">Command Center v1.3.0</div>
+    <h1>Your AI Command Center</h1>
+    <p>Quick reference for daily use. Bookmark this page.</p>
+    <div style="margin-top: 16px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+      <span class="status connected"><span class="status-dot"></span> Google Workspace</span>
+      <span class="status connected"><span class="status-dot"></span> Slack</span>
+      <span class="status connected"><span class="status-dot"></span> Profile Loaded</span>
+    </div>
+  </div>
+
+  <!-- How to Start -->
+  <div class="card-group">
+    <div class="section-title">How to Start Claude Code</div>
+    <div class="card">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Open Finder</h3>
+          <p>Click the Finder icon in your Dock (the smiling face icon at the bottom of your screen).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Navigate to your folder</h3>
+          <p>In the left sidebar, click <strong>Documents</strong>. Find the folder called <span class="highlight">claude code test</span></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Open Terminal here</h3>
+          <p>Right-click (or Control-click) the folder. In the menu that appears, select the <strong>second to last option</strong>: <strong>"New Terminal at Folder"</strong></p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Start Claude Code</h3>
+          <p>A Terminal window opens. Type <span class="highlight">claude</span> and press <strong>Enter</strong>. You are now inside Claude Code.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Run your first command</h3>
+          <p>Type <span class="highlight">/briefing</span> to see your daily intelligence. Or type <span class="highlight">/command-center</span> to see everything available.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily Commands -->
+  <div class="card-group">
+    <div class="section-title">Your 5 Daily Commands</div>
+
+    <div class="command-card">
+      <div class="command-icon briefing">&#x1F4CA;</div>
+      <div>
+        <div class="command-name">/briefing</div>
+        <div class="command-desc">Your morning intelligence. Revenue, calendar, emails, leads, and flags. Start every day here.</div>
+      </div>
+    </div>
+
+    <div class="command-card">
+      <div class="command-icon board">&#x1F9E0;</div>
+      <div>
+        <div class="command-name">/board-meet [question]</div>
+        <div class="command-desc">Ask your advisory board anything. Pricing, strategy, growth, hard decisions.</div>
+        <div class="command-example">Example: /board-meet Should I raise my membership to $297?</div>
+      </div>
+    </div>
+
+    <div class="command-card">
+      <div class="command-icon content">&#x270D;&#xFE0F;</div>
+      <div>
+        <div class="command-name">/content-engine [topic]</div>
+        <div class="command-desc">Full content suite from one topic. Blog, social posts, video script, newsletter, visuals. Deep research first.</div>
+        <div class="command-example">Example: /content-engine overcoming fear of failure using neuroscience</div>
+      </div>
+    </div>
+
+    <div class="command-card">
+      <div class="command-icon voice">&#x1F50A;</div>
+      <div>
+        <div class="command-name">/voice [paste text]</div>
+        <div class="command-desc">Rewrites any text in your brand voice. Paste an email, caption, or paragraph.</div>
+      </div>
+    </div>
+
+    <div class="command-card">
+      <div class="command-icon launch">&#x1F680;</div>
+      <div>
+        <div class="command-name">/launch [product]</div>
+        <div class="command-desc">Complete launch system. ICA, offer, funnel, emails, content, ads, visuals. 10 builds, step by step.</div>
+        <div class="command-example">Example: /launch NeuroGym Mental Fitness Membership</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Tips -->
+  <div class="card-group">
+    <div class="section-title">Quick Tips</div>
+    <div class="card">
+      <div class="tip">
+        <div class="tip-icon">&#x21A9;&#xFE0F;</div>
+        <div class="tip-text"><strong>Resume a previous chat:</strong> Type <span class="highlight">claude --resume</span> in Terminal to pick up where you left off.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">&#x2728;</div>
+        <div class="tip-text"><strong>Start fresh:</strong> Type <span class="highlight">claude</span> in Terminal for a new session.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">&#x1F4AC;</div>
+        <div class="tip-text"><strong>Just ask in plain English.</strong> You do not need special syntax. Describe what you want and Claude figures out the right command.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">&#x1F4BE;</div>
+        <div class="tip-text"><strong>Everything saves automatically.</strong> Your business profile, voice, learnings, and board all persist between sessions.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">&#x1F4CB;</div>
+        <div class="tip-text"><strong>See all commands:</strong> Type <span class="highlight">/command-center</span> inside Claude Code for the full list.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Troubleshooting -->
+  <div class="card-group">
+    <div class="section-title">If Something Goes Wrong</div>
+    <div class="card">
+      <div class="trouble-item">
+        <div class="trouble-problem">"command not found: claude"</div>
+        <div class="trouble-fix">Close the Terminal window. Open a new one from your folder (Step 1-3 above). Try again.</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-problem">Claude is stuck or not responding</div>
+        <div class="trouble-fix">Press <strong>Ctrl+C</strong> (hold Control and press C). Then type <span class="highlight">claude</span> to start a new session.</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-problem">Accidentally closed Terminal</div>
+        <div class="trouble-fix">No problem. Follow Steps 1-4 above. Type <span class="highlight">claude --resume</span> to continue where you left off.</div>
+      </div>
+      <div class="trouble-item">
+        <div class="trouble-problem">Need help with anything else</div>
+        <div class="trouble-fix">WhatsApp Muhammad. Or schedule a follow-up session.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Built with Command Center by <a href="https://asmaldigital.com">Asmal Digital</a>
+  </div>
+
+</div>
+
+</body>
+</html>
