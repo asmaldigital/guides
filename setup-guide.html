@@ -542,12 +542,84 @@
     <p class="section-desc">Select your operating system and follow the steps.</p>
 
     <div class="platform-tabs">
-      <button class="platform-tab active" onclick="switchTab('mac')">Mac</button>
+      <button class="platform-tab active" onclick="switchTab('desktop')">Desktop App</button>
+      <button class="platform-tab" onclick="switchTab('mac')">Mac</button>
       <button class="platform-tab" onclick="switchTab('windows')">Windows</button>
     </div>
 
+    <!-- Desktop App -->
+    <div id="desktop-content" class="platform-content active">
+      <div class="card">
+        <div class="info tip" style="margin-bottom: 16px;">
+          <span class="info-icon">RECOMMENDED</span>
+          <div>If you prefer a visual interface over the terminal, use the Claude Desktop App. Same functionality, friendlier experience.</div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Download the Claude Desktop App</h3>
+            <p>Go to <a href="https://claude.ai/download" target="_blank" style="color: var(--cyan);">claude.ai/download</a> and download the app for your Mac or Windows computer.</p>
+            <p style="margin-top: 8px;">Open the app and sign in with your Claude account (Pro or Max plan required).</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Install GitHub CLI (one-time terminal step)</h3>
+            <p>You need this for plugin access. Open <strong>Terminal</strong> (Mac) or <strong>PowerShell</strong> (Windows) and run:</p>
+            <p style="margin-top: 8px; font-weight: 600;">Mac:</p>
+            <div class="info tip" style="margin-top: 4px; margin-bottom: 8px;">
+              <span class="info-icon">FIRST</span>
+              <div>If you do not have Homebrew installed, run this first:</div>
+            </div>
+            <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</div>
+            <p style="margin-top: 8px;">After Homebrew is installed, run:</p>
+            <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button>brew install gh && gh auth login</div>
+            <p style="margin-top: 12px; font-weight: 600;">Windows:</p>
+            <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button>winget install GitHub.cli</div>
+            <p style="margin-top: 4px;">Then open a new PowerShell window and run:</p>
+            <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button>gh auth login</div>
+            <p style="margin-top: 8px;">Select: <strong>GitHub.com</strong> > <strong>HTTPS</strong> > <strong>Login with a web browser</strong>. Follow the prompts.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Open the Code tab and select a folder</h3>
+            <p>In the Claude Desktop App, click <strong>"Code"</strong> at the top (next to Chat and Cowork).</p>
+            <p style="margin-top: 8px;">Click <strong>"Select a folder"</strong> and create a new folder called <strong>Command Center</strong> in your Documents. Select it.</p>
+            <p style="margin-top: 8px; color: var(--cool-gray); font-size: 14px;">This is where all your Command Center files will live.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div>
+            <h3>Install Command Center plugin</h3>
+            <p>In the Code tab chat input, type:</p>
+            <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button>/plugin marketplace add asmaldigital/command-center</div>
+            <p style="margin-top: 8px;">Wait for it to sync. Then type:</p>
+            <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button>/plugin install command-center@command-center</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <div>
+            <h3>Start Command Center</h3>
+            <p>Type in the Code tab:</p>
+            <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">Copy</button>/command-center</div>
+            <p style="margin-top: 8px;">The system will walk you through everything from here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Mac -->
-    <div id="mac-content" class="platform-content active">
+    <div id="mac-content" class="platform-content">
       <div class="card">
         <div class="step">
           <div class="step-num">1</div>
@@ -693,11 +765,46 @@
     <p class="section-desc">Installation is done. Here is how you start Claude Code every time.</p>
 
     <div class="platform-tabs">
-      <button class="platform-tab active" onclick="switchRunTab('mac-run')">Mac</button>
+      <button class="platform-tab active" onclick="switchRunTab('desktop-run')">Desktop App</button>
+      <button class="platform-tab" onclick="switchRunTab('mac-run')">Mac</button>
       <button class="platform-tab" onclick="switchRunTab('win-run')">Windows</button>
     </div>
 
-    <div id="mac-run" class="platform-content active">
+    <!-- Desktop App Run -->
+    <div id="desktop-run" class="platform-content active">
+      <div class="card">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Open the Claude Desktop App</h3>
+            <p>Launch the Claude app from your Applications (Mac) or Start Menu (Windows).</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Click the Code tab</h3>
+            <p>At the top of the app, click <strong>"Code"</strong> (next to Chat and Cowork).</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Select your Command Center folder</h3>
+            <p>Click <strong>"Select a folder"</strong> and choose the <strong>Command Center</strong> folder you created in Documents.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div>
+            <h3>Run Command Center</h3>
+            <p>Type <span class="code">/command-center</span> in the chat input and press Enter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mac-run" class="platform-content">
       <div class="card">
         <div class="step">
           <div class="step-num">1</div>
